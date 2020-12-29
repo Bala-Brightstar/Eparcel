@@ -7,6 +7,7 @@ const amplify_envinfo = JSON.parse(amplify_envinfo_rawdata);
 const envid = amplify_envinfo.envName;
 console.log("ng build configuration id:", envid)
 
-const ngbuildcmd = "ng build --configuration=" + envid;
+//const ngbuildcmd = "ng build --configuration=" + envid;
+const ngbuildcmd = "ng build --configuration='ueosbxfbsm'";
 var child_process = exec(ngbuildcmd); 
 child_process.stdout.pipe(process.stdout);
