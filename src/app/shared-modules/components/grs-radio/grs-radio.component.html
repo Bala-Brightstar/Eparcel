@@ -1,0 +1,9 @@
+
+<div class="row form-group">
+  <label class="control-label col-sm-2">{{radioLabel}}</label>
+  <div class="col-sm-10">
+    <mat-radio-group  aria-label="Select a radio" [(ngModel)]="displayValue">
+      <mat-radio-button #button (click)="handleRadioEvent($event, button)" class="customRadio"  [value]="val" *ngFor="let val of radioCustomValue; let i=index">{{val.value}}</mat-radio-button>
+    </mat-radio-group>
+  </div>
+</div>

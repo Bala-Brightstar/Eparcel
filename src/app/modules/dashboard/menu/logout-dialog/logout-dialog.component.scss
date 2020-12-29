@@ -1,0 +1,33 @@
+.logout-title {
+    color: #4C4E56;
+    text-align: center;
+    font-family: var(--bsfont55);
+    font-size: 26px;
+    font-weight: 600;
+    margin: 40px 0 14px;
+}
+.logout-content {
+    color: #4C4E56;
+    opacity: 0.8;
+    font-size: 18px;
+    line-height: 24px;
+    max-width: 396px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.logout-btn {
+    justify-content: center;
+    margin-bottom: auto;
+    padding: 0;
+    min-height: auto;
+}
+.mat-raised-button.mat-primary {
+    background-color: #c8102e;
+}
+::ng-deep .cdk-overlay-dark-backdrop {
+    background: rgba(54,48,84,0.85);
+}
+::ng-deep .mat-dialog-container {
+    border-radius: 10px;
+    padding: 40px 24px;
+}

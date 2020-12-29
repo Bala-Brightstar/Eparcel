@@ -1,0 +1,19 @@
+.customMatInput{
+    font-size: 15px;
+}
+.trackingErrorInfo{
+    margin: 1%;
+    padding: 1%;
+    color:#cf102d;
+}
+.inputContainer {
+    display: flex;
+    flex-direction: row;
+}
+ 
+.errorContainer {
+    margin-top: 4%;
+    margin-left: 3%;
+    flex: none;
+    color: red;
+}

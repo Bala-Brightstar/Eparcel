@@ -1,0 +1,146 @@
+.menuColor{
+  background-color: #3f51b5;
+}
+/* Space flex for right to left */
+.example-spacer {
+  flex: 1 1 auto;
+}
+/* Header Color */
+.mat-toolbar {
+  background: #FFFFFF!important;
+  color: #292727 !important;
+}
+.mat-toolbar-row, .mat-toolbar-single-row {
+height: 70px;
+border-bottom: 1px solid #efefef;
+}
+
+button:focus {
+outline: none;
+}
+.mat-menu-item{
+height: 38px;
+line-height: 38px;
+}
+.styleUsername{
+font-size: 14px;
+}
+#inner1 {
+color: #4C4E56;
+font-size: 16px;
+font-family: 'Univers 55';
+font-weight: 600;
+}
+
+#inner2{
+color: rgba(76,78,86,0.8);
+font-size: 12px;
+}
+#wrapper{
+margin-left:auto;
+margin-right:auto;
+height:auto; // this is not needed, as parent container, this div will size automaticly
+width:auto; // this is not needed, as parent container, this div will size automaticly
+}
+
+.breadcrumb {
+  padding: 10px 12px!important;
+  list-style: none !important;
+  list-style-type: none!important;
+  background-color: #fffdfd!important;
+}
+.breadcrumb li {
+display: inline;
+font-size: 14px;
+}
+.breadcrumb li+li:before {
+padding: 8px;
+color: black;
+content: "/\00a0";
+}
+.breadcrumb li a {
+color: #4C4E56;
+text-decoration: none;
+font-family: var(--bsfont45);
+}
+ol.breadcrumb li a:hover {
+color: #4C4E56;
+text-decoration: underline;
+}
+
+.grsMenuItemAlignmentOptions {
+margin-right: 20px;
+}
+
+/*2/12/2020*/
+.user-block {
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 8px 14px;
+cursor: pointer;
+margin-left: 8px;
+}
+.user-block:hover {
+background-color: #eee;
+border-radius: 4px;
+}
+.mat-icon-button {
+width: 46px;
+height: 46px;
+line-height: 44px;
+margin-left: 10px ;
+}
+.mat-icon-button:hover {
+background-color: #eeeeee;
+border-radius: 4px;
+}
+.avatar {
+position: relative;
+top: -1px;
+}
+.avatar-block {
+display: block;
+line-height: 13px;
+padding-left: 14px;
+padding-top: 0;
+}
+.full-screen svg {
+position: relative;
+top: -1px;
+}
+.user-chevron {
+border: none;
+background: transparent;
+padding-left: 10px;
+padding-right: 0;
+}
+
+.notify-count {
+position: absolute;
+background: #C8102E;
+width: 19px;
+height: 19px;
+border-radius: 50%;
+text-align: center;
+color: #fff;
+font-size: 11px;
+line-height: 17px;
+right: 3px;
+top: 9px;
+border: 3px solid #fff;
+font-family: 'Univers 45';
+}
+.mat-icon-button:hover .notify-count {
+border-color: #f9e7ea;
+}
+
+@media only screen and ( max-width:768px ){
+  mat-toolbar{
+    width: 20%;
+  }
+
+  .breadcrumb{
+    display: none;
+  }
+}

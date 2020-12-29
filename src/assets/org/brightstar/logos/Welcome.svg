@@ -1,0 +1,22 @@
+<svg viewBox="0 0 100 200" width="100" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" class="">
+     <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+     <g>
+      <defs>
+        <pattern id="img1" patternUnits="userSpaceOnUse" width="100%" height="100%">
+          <image id="img1image" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.brightstar.com/wp-content/themes/2017/assets/images/home-hero-image-1.jpg" x="-25" y="-20" width="130" height="110"></image>
+        </pattern>
+        <pattern id="img2" patternUnits="userSpaceOnUse" width="100%" height="100%">
+          <image id="img2image" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.brightstar.com/wp-content/themes/2017/assets/images/home-hero-image-2.jpg" x="-25" y="-20" width="130" height="110"></image>
+        </pattern>
+        <pattern id="img3" patternUnits="userSpaceOnUse" width="100%" height="100%">
+          <image id="img3image" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="https://www.brightstar.com/wp-content/themes/2017/assets/images/home-hero-image-3.jpg" x="-1" y="-20.8" width="131" height="111"></image>
+        </pattern>
+      </defs>
+
+      <polygon id="red" points="0,0  63,0  0,32 0,52" stroke-width="1" stroke="#000000" fill="#b80e29"></polygon>
+      <polygon id="poly2" points="63,0  75,0  0,102 0,32" stroke-width="1" stroke="#0000ff" fill="url(#img1)"></polygon>
+      <polygon id="poly3" points="87,0 75,0 -100,200 10,200" stroke-width="1" stroke="#00ff00" fill="url(#img2)"></polygon>
+      <polygon id="poly4" points="100,0 87,0 10,200 100,200" stroke-width="1" stroke="#ff0000" fill="url(#img3)"></polygon>
+
+     </g>
+    </svg>

@@ -1,0 +1,235 @@
+<div class="getdekit-page-wrapper page-wrapper">
+    <div class="row page-title">
+        <div class="col-sm-12">
+            <h4>Get Dekit</h4>
+        </div>
+    </div>
+    <ng-template #showInputTextField>
+        <div class="trackingIdInputContainer dekit-content container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <label class="control-label">Search using Tracking number</label>
+                    <div class="form-field-wrapper">
+
+                        <div class="trackingIDContainer">
+                            <app-grs-input (keydown.enter)="getTrackingInfo()" class="dekitInputpadding" [inputType]="inputType"
+                                [customFormGroup]="getDekitForm" [formCtrlName]="getDekitForm.get('searchTrackingId')">
+                            </app-grs-input>
+                            <small *ngIf="showDekitInfoError" class="customErrorContainer">
+                                {{errorMessage}}
+                            </small>
+                        </div>
+                        <div class="buttonClass">
+                            <app-grs-button (click)="getTrackingInfo()">Search
+                                <mat-icon *ngIf="showButtonSpinner == true" class="spinner">
+                                    <mat-spinner class="spinner" color="warn" diameter="20">
+                                    </mat-spinner>
+                                </mat-icon>
+                            </app-grs-button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </ng-template>
+
+    <div class="dekit-content container" *ngIf="showDekitInfo == true else showInputTextField">
+        <div class="section-one">
+            <div class="row form-group">
+                <div class="col-sm-6">
+                    <label class="control-label">{{trackingNumberHeader}}</label>
+                    <div class="form-field">
+                        <app-grs-input class="customMatInput" [textBoxlabel]="trackingIDLabel" [inputType]="inputType"
+                            [customFormGroup]="getDekitForm" [formCtrlName]="getDekitForm.get('trackingNumber')">
+                        </app-grs-input>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label class="control-label">{{userIdHeader}}</label>
+                    <div class="form-field">
+                        <app-grs-input class="dekitInputpadding" [inputType]="inputType"
+                            [customFormGroup]="getDekitForm" [formCtrlName]="getDekitForm.get('username')">
+                        </app-grs-input>
+                    </div>
+                </div>
+            </div>
+            <div class="channel row form-group">
+                <ng-container *ngIf="(getDekitData.channel !== null || channel.length > 0); else deptTemplate">
+                    <div class="col-sm-6">
+                        <label class="control-label">{{channelHeader}}</label>
+                        <div class="form-field" style="margin-top: 5px;">
+                            <ng-container *ngFor="let chnl of channel">
+                                <mat-chip-list aria-label="Channel selection">
+                                    <mat-chip disabled="true">
+                                    {{chnl}}
+                                </mat-chip>
+                                  </mat-chip-list>
+                            </ng-container>
+                        </div>
+                    </div>
+                </ng-container>
+                <ng-template #deptTemplate>
+                    <div class="col-sm-6">
+                        <label class="control-label">{{departmentHeader}}</label>
+                        <div class="form-field" style="margin-top: 5px;">
+                            <ng-container *ngFor="let dept of department">
+                                <mat-chip-list aria-label="Fish selection">
+                                    <mat-chip disabled="true">
+                                    {{dept}}
+                                </mat-chip>
+                                  </mat-chip-list>
+                            </ng-container>
+                        </div>
+                    </div>
+                </ng-template>
+                <div class="col-sm-6">
+                    <label class="control-label">{{dateHeader}}</label>
+                    <div class="form-field">
+                        <app-grs-input class="dekitInputpadding" [inputType]="inputType"
+                            [customFormGroup]="getDekitForm" [formCtrlName]="getDekitForm.get('date')">
+                        </app-grs-input>
+                    </div>
+                </div>
+            </div>
+            <div class="channel row form-group">
+                <div class="col-sm-6">
+                    <label class="control-label">{{boxComplianceHeader}}</label>
+                    <div class="form-field" style="margin-top: 5px;">
+                        <ng-container *ngFor="let compliance of complianceData">
+                            <mat-chip-list aria-label="Fish selection">
+                                <mat-chip disabled="true">
+                                {{compliance}}
+                            </mat-chip>
+                              </mat-chip-list>
+                        </ng-container>
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label class="control-label">{{transactionDateHeader}}</label>
+                    <div class="form-field">
+                        <app-grs-input class="dekitInputpadding" [inputType]="inputType"
+                            [customFormGroup]="getDekitForm" [formCtrlName]="getDekitForm.get('transactionDate')">
+                        </app-grs-input>
+                    </div>
+                </div>
+            </div>
+
+            <div class="channel row form-group">
+                <div class="col-sm-6">
+                    <label class="control-label">{{customerIdHeader}}</label>
+                    <div class="form-field">
+                        <app-grs-input class="dekitInputpadding" [inputType]="inputType"
+                            [customFormGroup]="getDekitForm" [formCtrlName]="getDekitForm.get('customerid')">
+                        </app-grs-input>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <label class="control-label">{{workStationHeader}}</label>
+                    <div class="form-field">
+                        <app-grs-input class="dekitInputpadding" [inputType]="inputType"
+                            [customFormGroup]="getDekitForm" [formCtrlName]="getDekitForm.get('workstation')">
+                        </app-grs-input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="grsUnitContainer row">
+            <div class="control-label col-sm-2">
+                <label>{{attributeName}}</label>
+            </div>
+            <div class="control-label col-sm-10">
+                <div class="grsAttributesFlexContainer"
+                    [ngClass]="{'grsUnitAlignMentBorderBottom': isLicencePlateNumberAvailable !== true}">
+                    <div class="grs-unit-type-container" *ngFor="let getDekitAttribute of getDekitData.header.line"
+                        [ngClass]="{'col-sm-12':getDekitData.header.line === 1, 'col-sm-6':getDekitData.header.line === 2, 'col-sm-4':getDekitData.header.line === 3 }">
+                        <ng-container *ngIf="getDekitAttribute.numberOfUnits > 0">
+                            <div class="grs-test-form-fields">
+                                <label class="control-label">{{getDekitAttribute.attributeValue}}</label>
+                                <app-grs-input class="customMatInput grs-unit-type-input-field" [inputType]="inputType"
+                                    [customFormGroup]="getDekitForm"
+                                    [formCtrlName]="getDekitForm.get(getDekitAttribute.attributeValue)">
+                                </app-grs-input>
+                            </div>
+
+                            <div class="row form-group deviceList-wrapper"
+                                style="display: flex; flex-direction: column;">
+                                <div class="grsItemContainer">
+                                    <div class="deviceFieldsArrangement grs-getdekit-hqid-wrapper"
+                                        *ngIf="getDekitAttribute.item !== null">
+                                        <div class="deviceFieldContainer">
+                                            <label
+                                                class="control-label">{{getDekitAttribute.item.attributeName}}</label>
+                                            <div class="deviceFields">
+                                                <div class="grs-getdekit-devicefield"
+                                                    *ngFor="let item of getDekitAttribute.item.attributeValues">
+                                                    <mat-form-field>
+                                                        <input disabled="disabled" class="customMatInput"
+                                                            autocomplete="off" [value]="item.attributevalue" matInput
+                                                            type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="deviceFieldsArrangement licensePlate-wrapper"
+                                        *ngIf="getDekitAttribute.item !== null && isLicencePlateNumberAvailable ===  true">
+                                        <div class="deviceFieldContainer">
+                                            <label class="control-label">{{itemLicenceHeader}}</label>
+                                            <div class="deviceFields">
+                                                <div class="grs-getdekit-devicefield"
+                                                    *ngFor="let licenceNumber of getDekitAttribute.item.attributeValues">
+                                                    <mat-form-field style="min-width: 200px;">
+                                                        <input disabled="disabled" class="customMatInput"
+                                                            autocomplete="off" #licenceVal
+                                                            [value]="licenceNumber.lineLicensePlateNo" matInput
+                                                            type="text">
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ng-container
+                                    *ngIf="isLicencePlateNumberAvailable === true || (getDekitAttribute.item === null && getItemlevelLicenceValues.length > 0)">
+                                    <div class="lineLicenceContainer" style="padding: 5%;">
+                                        <div>
+                                            <label class="control-label licenceLabel">{{lineLicenceHeader}}</label>
+                                        </div>
+                                        <div class="licenceField">
+                                            <mat-form-field style="min-width: 125px;">
+                                                <input disabled="disabled" class="customMatInput" autocomplete="off"
+                                                    [value]="getDekitAttribute.lineLicensePlateNo" matInput type="text">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="headerLicenceContainer" *ngIf="getDekitData.headerLicensePlateNo !== null">
+                    <div>
+                        <label class="control-label licenceLabel">{{headerLicenceHeader}}</label>
+                    </div>
+                    <div>
+                        <mat-form-field>
+                            <input disabled="disabled" class="customMatInput" autocomplete="off"
+                                [value]="getDekitData.headerLicensePlateNo" matInput type="text">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-container>
+            <div class="remappingButton" style="margin-top: 1%;">
+                <app-grs-button (click)="reMaptoSearchField()">Search another Tracking Number <span
+                        class="material-icons">search</span></app-grs-button>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<app-grs-alerts></app-grs-alerts>

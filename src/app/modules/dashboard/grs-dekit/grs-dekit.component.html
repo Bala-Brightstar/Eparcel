@@ -1,0 +1,66 @@
+<div class="dekit-page-wrapper page-wrapper">
+    <div class="row page-title">
+        <div class="col-sm-12">
+            <h4>Dekit</h4>
+        </div>
+    </div>
+    <div class="dekit-content container">
+
+        <ng-template #dekitTemplate></ng-template>
+        <small class="validationErrorInfounit" *ngIf='isunitErrorInfo == true'>
+            {{unitErrorInfo}}
+        </small><br *ngIf='isunitErrorInfo == true'>
+        <small class="validationErrorInfounit" *ngIf='unitmissing == true'>
+            {{unitErrorInfo}}
+        </small><br *ngIf='unitmissing == true'>
+        <small class="trackingErrorInfo" *ngIf='isDeKitInfoExist == true'>
+            {{istrackingNumberExistErrorInfo}}
+        </small>
+        <small class="trackingErrorInfo" *ngIf='isTrackingInvalid == true'>
+            {{isTrackingInvalidInfo}}
+        </small>
+        <small class="validationErrorInfoHQID" *ngIf='iscounthqidErrorInfo == true'>
+            {{counthqidErrorInfo}}
+        </small>
+
+        <ng-container *ngIf="showSubitButton == true">
+            <ng-container *ngTemplateOutlet="buttonTemplate"></ng-container>
+        </ng-container>
+
+        <ng-template #buttonTemplate>
+            <div class="row">
+                <div class="col-sm-10 offset-sm-2 save-dekit">
+                    <small class="validationErrorInfo" *ngIf='isCommentWrkStnErrorInfo == true'>
+                        {{CommentWrkStnErrorInfo}}
+                    </small>
+                    <div class="commentsPadding  form-group saveform">
+                        <form [formGroup]="dekitTrackingForm" class="row">
+                            <div class="col-sm-4">
+                                <mat-form-field class="commentsrightPadding">
+                                    <mat-label>Comment</mat-label>
+                                    <textarea matInput class="customMatInput" autocomplete="off" [type]="inputType"
+                                        formControlName="comment" placeholder="Enter comment"></textarea>
+                                </mat-form-field>
+                            </div>
+                            <div class="col-sm-4">
+                                <mat-form-field class="example-full-width">
+                                    <mat-label>Enter Workstation No.</mat-label>
+                                    <input autocomplete="off" matInput formControlName="WorkStation"
+                                        placeholder="Enter Workstation">
+                                </mat-form-field>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-sm-10 offset-sm-2 save-dekit">
+                    <app-grs-button (click)="createDekitRequest()">Submit Dekit Request</app-grs-button>
+                </div>
+
+            </div>
+
+        </ng-template>
+    </div>
+</div>

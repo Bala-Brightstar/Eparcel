@@ -1,0 +1,216 @@
+.welcomeContainer{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  justify-items: center;
+  // align-items: center;
+  margin-top: 3%;
+  padding: 3%;
+}
+
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+
+.mat-table{
+  background-color: rgba(255, 255, 255, 0.959);
+  overflow: auto;
+  width: 100%;  max-height: 500px;
+}
+
+.mat-header-cell, .mat-cell {
+  min-width: 150px;
+}
+
+.mat-header-cell{
+  font-size: small;
+}
+
+.mat-form-field-underline{
+  background-color:#C8102E;
+}
+
+.mat-form-field-flex{
+  font-size: 14px;
+  line-height: 1em;
+  color: #555;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 8px;
+  padding: 2px;
+}
+.mat-form-field-wrapper{
+  padding-bottom: 1.25em;
+  padding-top: 1.25em;
+}
+.mat-form-field-infix{
+  border:0px;
+}
+
+.mat-cell,
+.mat-header-cell {
+word-wrap: initial;
+display: table-cell;
+padding: 0px 10px;
+line-break: unset;
+width: 100%;
+white-space: nowrap;
+overflow: hidden;
+vertical-align: middle;
+}
+.mat-row,
+.mat-header-row {
+display: table-row;
+}
+
+.login-btn {
+  // background-color: #2D2926;
+  background-color: #2f2563;
+	border-radius: 6px;
+	color: #fff;
+	display: inline-block;
+	font-size: 20px;
+	font-family: 'Univers 65';
+	padding: 16px 26px;
+    text-decoration: none;
+    cursor: context-menu;
+    width: 160px;
+    margin-left: 60px;
+    margin-bottom: -455px;
+    position: absolute;
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.login-btn svg {
+	position: relative;
+	top: -2px;
+	margin-right: 12px;
+	fill: #ffffff;
+}
+.login-btn:hover {
+	background-color: #ffffff;
+	color: #C8102E;
+  text-decoration: none;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px #c8102e;
+}
+.login-btn:hover svg {
+	fill: #C8102E;
+}
+
+.mat-column-select {
+  overflow: initial;
+}
+
+// .table-responsive {
+//   display: flex;
+//   width: 100%;
+//   // overflow-x: auto;
+//   .mat-table {
+//       width: 100%;
+//       max-width: 100%;
+//       margin-bottom: 1rem;
+//       display: table;
+//       border-collapse: collapse;
+//       margin: 0px;
+//   }
+//   .mat-row,
+//   .mat-header-row {
+//       display: table-row;
+//   }
+//   .mat-cell,
+//   .mat-header-cell {
+//       word-wrap: initial;
+//       display: table-cell;
+//       padding: 0px 5px;
+//       line-break: unset;
+//       width: auto;
+//       white-space: nowrap;
+//       overflow: hidden;
+//       vertical-align: middle;
+//   }
+// }
+
+.table-responsive{
+  overflow-x: auto;
+}
+
+.welcomeh1{
+  color: rgb(13, 11, 90);
+  font: bold 30px Helvetica, Arial, Sans-Serif;
+  text-shadow: 1px 1px #C8102E,
+               1px 1px #C8102E,
+               1px 1px #C8102E;
+  // -webkit-transition: all 0.12s ease-out;
+  // -moz-transition:    all 0.12s ease-out;
+  // -ms-transition:     all 0.12s ease-out;
+  // -o-transition:      all 0.12s ease-out;
+}
+
+// .welcomeh1:hover {
+//   position: relative;
+//   top: -3px;
+//   left: -3px;
+//   text-shadow: 1px 1px #fe4902,
+//                2px 2px #fe4902,
+//                3px 3px #fe4902,
+//                4px 4px #fe4902,
+//                5px 5px #fe4902,
+//                6px 6px #fe4902;
+// }
+
+@media only screen and ( max-width:768px ){
+  .welcomeContainer{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-items: center;
+    // align-items: center;
+    // margin-top: 3%;
+    // padding: 3%;
+  }
+
+  .login-btn {
+    // background-color: #2D2926;
+    background-color: #2f2563;
+    border-radius: 6px;
+    color: #fff;
+    display: inline-block;
+    font-size: 10px;
+    font-family: 'Univers 65';
+    padding: 6px 16px;
+      text-decoration: none;
+      cursor: context-menu;
+      width: 100px;
+      margin-left: 20px;
+      margin-bottom: -455px;
+      position: absolute;
+      transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+  .login-btn svg {
+    position: relative;
+    top: -3px;
+    margin-right: 1px;
+    fill: #ffffff;
+    width: 14px;
+  }
+  .mat-table{
+    background-color: rgba(255, 255, 255, 0.959);
+    overflow: auto;
+    width: 98%;  max-height: 500px;
+  }
+
+  .welcomeh1{
+font-size: 18px;
+  }
+
+
+  .mat-snack-bar-handset .mat-snack-bar-container{
+    width: 100px !important;
+  }
+
+}
+

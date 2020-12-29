@@ -1,0 +1,36 @@
+name: $(SourceBranchName)_$(BuildID)
+
+trigger:
+- environment/ueositfbo
+
+variables:
+  envid: 'ueositfbo'
+  region: 'us-east-1'
+  deployrolearn: 'arn:aws:iam::883364183662:role/local_azuredevops_grs_grs_fe1'
+  profile_name: 'default'
+  webappname: 'grsfe1'  
+  deploywebapps3bucket: 'grs-847636-webapp-ueositpo'
+  cfdistributionid: 'E32LBUU01EK7GB'
+
+stages:
+- stage: build
+  jobs:
+  - template: ../templates/jobs_build.yml
+    parameters:
+      envid: '$(envid)'
+      region: '$(region)'
+      deployrolearn: '$(deployrolearn)'
+      profile_name: '$(profile_name)'
+
+- stage: deploy
+  jobs:
+  - template: ../templates/jobs_deployment.yml
+    parameters:
+      envid: '$(envid)'
+      profile_name: '$(profile_name)'
+      awsamplifypublish: 'publish'
+      webappname: '$(webappname)'      
+      deploywebapps3bucket: $(deploywebapps3bucket)
+      cfdistributionid: '$(cfdistributionid)'
+      region: '$(region)'
+      deployrolearn: '$(deployrolearn)'

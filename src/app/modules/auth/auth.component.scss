@@ -1,0 +1,122 @@
+.single-layout {
+    min-height: 100vh;
+}
+.single-layout-row {
+    display: flex;
+    min-height: 100vh;
+}
+.single-layout-col.right,.single-layout-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox
+}
+.single-layout-col.right {
+    display: flex;
+    background: #970420 url('../../../assets/org/brightstar/logos/login-page/login-bs-bg.svg') no-repeat;
+    background-size: cover;
+}
+.single-layout-col.right, .single-layout-row {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+}
+.single-layout-col {
+    min-height: 100vh;
+    padding: 30px 50px 0;
+}
+.single-layout-left {
+    display: flex;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: flex-end;
+}
+.single-layout-left,.single-layout-right {
+    position: relative;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+}
+.single-layout-logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: auto;
+    bottom: auto;
+}
+.single-layout-logo img {
+	width: 220px;
+}
+.w-inline-block {
+    max-width: 100%;
+    display: inline-block;
+}
+.single-layout-col.left {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background: url('../../../assets/org/brightstar/logos/login-page/warehouse.jpg') no-repeat;
+	background-size: cover;
+}
+.grs-content h1 {
+	font-size: 32px;
+	color: #fff;
+	text-transform: uppercase;
+	font-family: 'Univers 65';
+	margin: 0;
+}
+.grs-content p {
+	font-size: 18px;
+  color: #fff;
+	line-height: 28px;
+	font-family: 'Univers 55';
+	margin: 30px 0;
+}
+.login-btn {
+  // background-color: #2D2926;
+  background-color: #2f2563;
+	border-radius: 6px;
+	color: #fff;
+	display: inline-block;
+	font-size: 20px;
+	font-family: 'Univers 65';
+	padding: 16px 26px;
+    text-decoration: none;
+    cursor: context-menu;
+}
+.login-btn svg {
+	position: relative;
+	top: -2px;
+	margin-right: 12px;
+	fill: #ffffff;
+}
+.login-btn:hover {
+	background-color: #ffffff;
+	color: #C8102E;
+	text-decoration: none;
+}
+.login-btn:hover svg {
+	fill: #C8102E;
+}
+@media only screen and (max-width: 767px) {
+	.single-layout-row {
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+		flex-direction: column;
+	}
+	.single-layout-row {
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+	}
+	.single-layout-col.left {
+		display: none;
+	}
+}

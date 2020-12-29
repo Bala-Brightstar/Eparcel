@@ -1,0 +1,9 @@
+<mat-form-field appearance="outline">
+    <mat-label>{{dropdownLabel}}</mat-label>
+    <mat-select (selectionChange)="handleDropdownChange($event)">
+      <!-- If value comes in json format make sure to change the [value]-->
+      <mat-option *ngFor="let val of channelDropdown" [value]="val.value">
+        {{val.value}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>

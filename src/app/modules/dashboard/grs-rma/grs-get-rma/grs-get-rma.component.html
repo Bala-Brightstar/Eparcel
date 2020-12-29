@@ -1,0 +1,196 @@
+<div class="getdekit-page-wrapper page-wrapper getRMAParent">
+   <div class="row page-title">
+       <div class="col-sm-12 rmaHeader">
+           <h4>Search RMA Details</h4>
+       </div>
+   </div>
+   <div *ngIf="isComponentInitialized == true else populateRma">
+       <div class="rmaInitialContainer">
+           <div>
+               <label class="control-label searchHeader">Search using RMA number</label>
+           </div>
+           <div>
+               <div class="rmaBodyContainer">
+                   <div class="rmaErrorDisplayContainer">
+                       <small *ngIf="showRmaInvalidError" class="customErrorContainer">
+                           {{errorMessage}}
+                       </small>
+                   </div>
+                   <div class="rmaInputFieldParent">
+                       <app-grs-input (keydown.enter)="getRmaDetails()" class="dekitInputpadding" [inputType]="inputType" [customFormGroup]="getRmaForm"
+                           [formCtrlName]="getRmaForm.get('rmanumber')">
+                       </app-grs-input>
+                   </div>
+                   <div class="rmaButton">
+                       <app-grs-button (click)="getRmaDetails()">Search
+                           <mat-icon *ngIf="showButtonSpinner == true" class="spinner">
+                               <mat-spinner class="spinner" color="warn" diameter="20">
+                               </mat-spinner>
+                           </mat-icon>
+                       </app-grs-button>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   <ng-template #populateRma>
+       <div class="rmaMainContainer">
+       
+           <div>
+               <div class="rmaMasterHeaderContainer">
+                   <div class="rmaCustomerHeaderContainer">
+                       <div style="margin-left: 3%; margin-top: 3%">
+                           <ng-container *ngFor="let rmaDetail of rmaHeaderLevelAttributes; let i = index">
+                               <!-- <ng-container *ngIf="getRmaData[rmaDetail] !== undefined">    -->                                     
+                                   <mat-form-field class="customFormFieldControl" [formGroup]="getRmaForm">
+                                           <mat-label class="customRMALabelColor" style="font-weight: bold;">{{rmaHeaderLevelDescription[i]}}
+                                           </mat-label>
+                                           <input [formControl]="getRmaForm.get(rmaDetail)" class="customMatInput" autocomplete="off"
+                                               matInput type="text">
+                                       </mat-form-field>
+                               <!-- </ng-container> -->
+                           </ng-container>
+                       </div>
+                       <div style="margin-left: 1%; margin-top: 3.5%;">
+                           <app-grs-button (click)="searchRMADetailsFromResponsePage()">Search<span
+                                   class="material-icons">search</span></app-grs-button>
+                       </div>
+                   </div>
+               </div>
+               <div class="customErrorContainer" style="margin-left: 2%; margin-top: 4%;">{{errorMessage}}</div>
+               <div class="rmaCustomerLineContainer" *ngIf="showRMAResult == true">
+                   <div>
+                       <div style="padding: 1%;">
+                           <h5 style="color: black">RMA Line</h5>
+                       </div>
+                       <ng-container *ngFor="let line of getRmaData.data.lines">
+                           <div class="rmaItemMasterContainer">
+                               <div>
+                                   <ng-container
+                                       *ngFor="let rmaDetail of customerRmaItemsLineHeaderAttributes; let i = index">
+                                       <ng-container *ngIf="line[rmaDetail] !== undefined">
+                                           <mat-form-field class="customFormFieldControl">
+                                               <mat-label class="customRMALabelColor" style="font-weight: bold;">
+                                                   {{customerRmaItemsLineHeaderDescription[i]}}</mat-label>
+                                               <input disabled="disabled" class="customMatInput" autocomplete="off"
+                                                   [value]="line[rmaDetail]" matInput type="text">
+                                           </mat-form-field>
+                                       </ng-container>
+                                   </ng-container>
+                               </div>
+                               <div >
+                                   <ng-container *ngFor="let item of line.items">
+                                       <div class="rmaItemDetailContainer">
+                                           <div style="padding: 1%;">
+                                               <h6 class="applyMatFormColorCode">RMA Items</h6>
+                                           </div>
+                                           <div class="rmaItemContainer">
+                                               <ng-container
+                                                   *ngFor="let itemAttribute of rmaItemsHeaderAttributes; let i = index">
+                                                   <ng-container *ngIf="item[itemAttribute] !== undefined">
+                                                       <ng-container
+                                                           *ngIf="itemAttribute === 'serialnumber' else otherItemFields">
+                                                           <ng-container
+                                                               *ngIf="item[itemAttribute] !== '' && item[itemAttribute] !== null">
+                                                               <div class="rmaSerialNumberContainer">
+                                                                   <span
+                                                                       class="rmaSerialHeader" style="font-weight: bold;">{{rmaItemsHeaderDescription[i]}}</span>
+                                                                   <div class="rmaSerialValue">
+                                                                       {{item[itemAttribute]}}
+                                                                   </div>
+                                                               </div>
+                                                           </ng-container>
+                                                       </ng-container>
+                                                       <ng-template #otherItemFields>
+                                                           <ng-container
+                                                               *ngIf="item[itemAttribute] !== '' && item[itemAttribute] !== null">
+                                                               <mat-form-field class="customFormFieldControl">
+                                                                   <mat-label class="customRMALabelColor" style="font-weight: bold;">
+                                                                       {{rmaItemsHeaderDescription[i]}}</mat-label>
+                                                                   <input disabled="disabled" class="customMatInput"
+                                                                       autocomplete="off" [value]="item[itemAttribute]"
+                                                                       matInput type="text">
+                                                               </mat-form-field>
+                                                           </ng-container>
+                                                       </ng-template>
+                                                   </ng-container>
+                                               </ng-container>
+
+                                               <!-- Amount Container start-->
+                                               <div class="amountContainer">
+                                                   <ng-container
+                                                       *ngFor="let amountAttribute of rmaAmountHeaderAttributes; let i = index">
+                                                       <ng-container *ngIf="item[amountAttribute] !== undefined">
+                                                           <mat-form-field class="customFormFieldControl">
+                                                               <mat-label class="customRMALabelColor" style="font-weight: bold;">
+                                                                   {{rmaAmountHeaderDescription[i]}}</mat-label>
+                                                               <input disabled="disabled" class="customMatInput"
+                                                                   autocomplete="off"
+                                                                   [value]="item[amountAttribute] + item['currency']"
+                                                                   matInput type="text">
+                                                           </mat-form-field>
+                                                       </ng-container>
+                                                   </ng-container>
+                                               </div>
+                                               <div *ngIf="item.deviceConditions.length > 0">
+                                                   <div style="padding: 1%;">
+                                                       <h6 class="applyMatFormColorCode">Device Conditions</h6>
+                                                   </div>
+                                                   <ng-container *ngIf="item.deviceConditions.length > 0">
+                                                       <ng-container
+                                                           *ngFor="let deviceArray of item.deviceConditions; let j = index">
+                                                           <div>
+                                                               <ng-container
+                                                                   *ngFor="let deviceConditionAttr of rmaDeviceConditionsAttributeHeader; let i = index">
+                                                                   <ng-container
+                                                                       *ngIf="deviceArray[deviceConditionAttr] !== undefined">
+                                                                       <mat-form-field class="customFormFieldControl">
+                                                                           <mat-label class="customRMALabelColor" style="font-weight: bold;">
+                                                                               {{rmaDeviceConditionsAttributeDescription[i]}}
+                                                                           </mat-label>
+                                                                           <input disabled="disabled"
+                                                                               class="customMatInput"
+                                                                               autocomplete="off"
+                                                                               [value]="deviceArray[deviceConditionAttr]"
+                                                                               matInput type="text">
+                                                                       </mat-form-field>
+                                                                   </ng-container>
+                                                               </ng-container>
+                                                           </div>
+                                                       </ng-container>
+                                                   </ng-container>
+                                               </div>
+                                               <!-- Amount Container end-->
+                                           </div>
+                                       </div>
+                                   </ng-container>
+                               </div>
+                           </div>
+                       </ng-container>
+                   </div>
+               </div>
+               <div class="trackingNumberContainer" *ngIf="showRMAResult == true">
+                   <div style=" margin-top: 2%;">
+                       <h5 style="color: black">Tracking Details</h5>
+                   </div>
+                   <div class="trackingNumberInnerContainer">
+                       <ng-container *ngFor="let trackingData of rmaTrackingheaderAttributes; let i = index">
+                           <ng-container *ngIf="getRmaData.data.trackingdata[trackingData] !== undefined">
+                               <mat-form-field class="customFormFieldControl">
+                                   <mat-label class="customRMALabelColor" style="font-weight: bold;">{{rmaTrackingheaderDescription[i]}}
+                                   </mat-label>
+                                   <input disabled="disabled" class="customMatInput" autocomplete="off"
+                                       [value]="getRmaData.data.trackingdata[trackingData]" matInput type="text">
+                               </mat-form-field>
+                           </ng-container>
+                       </ng-container>
+                   </div>
+               </div>
+               <div class="rmaBottomSearchContainer" class="centerText" *ngIf="showRMAResult == true">
+                   <app-grs-button (click)="reMaptoSearchField()">Search another RMA Number <span
+                           class="material-icons">search</span></app-grs-button>
+               </div>
+           </div>
+       </div>
+   </ng-template>
+</div>

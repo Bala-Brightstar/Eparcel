@@ -1,0 +1,240 @@
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.sidenav-header {
+  // background-color: #363054;
+  background-color: #0e52a2;
+    height: 50px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    span {
+        font-size: 1em;
+        color: #ffffff;
+    }
+}
+.side-nav {
+    width: 230px;
+    padding: 0px;
+}
+
+  .grs-branding-logo{
+    max-width: 150px;
+    height: auto;
+}
+
+mat-drawer-container {
+    height: 100%;
+}
+
+
+mat-drawer, mat-drawer-content {
+    transition-duration: .4s;
+    transition-timing-function: cubic-bezier(.25, .8, .25, 1);
+}
+
+mat-drawer {
+    position: fixed;
+    width: 197px;
+    background-color: #fdfdfd;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    transition-property: width;
+    &.sidenav-collapsed {
+        width: 100px;
+    }
+    ul {
+        padding: 0;
+        li {
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            list-style: none;
+            cursor: pointer;
+            margin: 10px;
+            padding: 10px;
+            background-color: #000000;
+            border-radius: 5px;
+        }
+    }
+}
+
+mat-drawer-content {
+    transition-property: transform, margin-left, margin-right;
+    &.sidenav-collapsed {
+        margin-left: 100px !important;
+    }
+}
+
+mat-card {
+    margin: 10px;
+}
+
+@media (max-width: 600px) {
+    mat-toolbar {
+        flex-direction: row-reverse !important;
+    }
+}
+.matero-branding-logo-expanded {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    vertical-align: middle;
+
+    [dir='rtl'] & {
+      margin-left: 10px;
+      margin-right: auto;
+    }
+  }
+/* Footer sticky */
+.version-info {
+    font-size: 8pt;
+    padding: 8px;
+    align-self: flex-end;
+    flex: 1 1 auto;
+  }
+
+  .footer {
+    position: absolute;
+    bottom: 0;
+    height: 40px;
+    color: black;
+    margin: 0px;
+ }
+/* Side Menu CSS */
+.mat-list-base .mat-list-item {
+    height: 41px;
+    color: #FFFFFF;
+}
+
+.mat-list-base .mat-list-item {
+  font-size: 14px !important;
+}
+
+.mat-nav-list .mat-list-item:hover, .mat-nav-list .mat-list-item:active, .mat-nav-list .mat-list-item.active {
+    border-left: 5px solid #cf102d ;
+    background: #cf102d;
+}
+.mat-nav-list .mat-list-item.active {
+    color: #FFFFFF ;
+}
+.iconMargin{
+    margin-right: 17px;
+}
+
+  .full-width {
+    width: 100%;
+    font-family: var(--bsfont55);
+  }
+  .menu-button {
+    transition: 300ms ease-in-out;
+    transform: rotate(0deg);
+  }
+  .menu-button.rotated {
+    transform: rotate(180deg);
+  }
+
+  .submenu {
+    overflow-y: hidden;
+    transition: transform 300ms ease;
+    transform: scaleY(0);
+    transform-origin: top;
+    padding-left: 30px;
+  }
+  .submenu.expanded {
+    transform: scaleY(1);
+  }
+.mat-typography {
+    width:54px;
+}
+
+  ::ng-deep .cdk-overlay-container{
+    // top: -32px !important;
+    //   left: 33px !important;
+      height: 100%  !important;
+      width: 100%  !important;
+  }
+  .drawer-background {
+    //background-color: #363054;
+    background-color: #0e52a2;
+  }
+
+.mat-drawer-halfcollapsed {
+  width: 70px;
+}
+
+.navigationIconContainer {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  margin-top: -5px;
+  margin-left: 15%;
+  left: 150px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+.navigationIconContainer-collapsed {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  margin-top: -5px;
+  margin-left: 15%;
+  left: 50px;
+  background-color: #FFFFFF;
+  cursor: pointer;
+}
+
+::ng-deep .mat-drawer {
+  overflow: visible !important;
+}
+
+::ng-deep .mat-drawer-container-collapsed {
+  width: 79px;
+}
+
+.menu-name-placement-expanded {
+  color: #FFFFFF;
+  margin-left: 24px;
+}
+
+.menu-name-placement-collapsed {
+  color: #FFFFFF;
+  margin-left: 10px;
+}
+
+.toggleArrowContainer {
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  margin-left: 5px;
+  // background-color: red;
+  background-color: #B23850;
+}
+
+::ng-deep .collapsed-submenu .mat-menu-content .mat-menu-item {
+  background-color: #363054;
+  margin-bottom: 3px;
+  color: #FFFFFF;
+  text-align: center;
+}
+
+::ng-deep .collapsed-submenu .mat-menu-content .mat-menu-item:hover {
+  // background-color: #cf102d;
+  background-color: #B23850;
+}
+
+::ng-deep .collapsed-submenu .mat-menu-content {
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+}
+
+::ng-deep .collapsed-submenu .mat-menu-content .mat-menu-item:last-child{
+  margin-bottom: 0px;
+}

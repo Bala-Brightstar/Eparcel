@@ -1,0 +1,26 @@
+<!-- <label class="control-label col-sm-2">{{label}}</label>
+<mat-form-field [formGroup]="customFormGroup">
+    <mat-label>{{textBoxlabel}}</mat-label>
+       <input #val class="customMatInput" (keyup.enter)="submit(val.value)"
+        autocomplete="off" matInput [type]="inputType" 
+        [formControl]="formCtrlName" [placeholder]="customPlaceHolder"> 
+  </mat-form-field>
+  <small class="errorContainer" *ngIf="isError == true">
+    {{errorValue}}
+</small>
+  -->
+
+<div class="row form-group">
+  <label class="control-label col-sm-2">{{textBoxlabel}}</label>
+  <div class="col-sm-10">
+      <mat-form-field [formGroup]="customFormGroup">
+          <mat-label>{{textBoxlabel}}</mat-label>
+          <input #val class="customMatInput" (keyup.enter)="submit(val.value)"
+           autocomplete="off" matInput [type]="inputType" [formControl]="formCtrlName" 
+           [placeholder]="customPlaceHolder"> 
+      </mat-form-field>
+      <small class="errorContainer" *ngIf="isError == true">
+        {{errorValue}}
+    </small>
+  </div>
+</div> 

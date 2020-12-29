@@ -1,0 +1,14 @@
+.colourButton{
+    color: #ffffff;
+    background-color: #cf102d;
+}
+.handsetUpdate, .handsetCancel {
+    flex: 1;
+    border-radius: 0px;
+  }
+
+.buttonDisabled {
+    background:#CCCCCC !important; 
+    color:#FFFFFF !important;
+    cursor: not-allowed;
+}

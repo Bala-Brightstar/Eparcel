@@ -1,0 +1,263 @@
+<div class="rowStyles" style="height: 214px;">
+   <div class="receiveInputstyles">
+      <h4 class="widgetsPadding">Receiving</h4>
+      <form [formGroup]="receiveRmaInputForm">
+         <div class="row">
+            <div class="col-sm-4 pr0" *ngIf="licensePlateNumberHide==true">
+               <span>
+                  <mat-form-field class="mat-form-field-attributes" appearance="fill">
+                     <img class="mat-card-image imageLogo"
+                        src="../../../../../assets/org/brightstar/logos/Receiving-image/license_icon.svg"
+                        alt="Photo of license_icon">
+                     <mat-label class="labelmargin">License Plate Number</mat-label>
+                     <input (keydown.enter)="getDeKitByLicensePlateNo()" ng-pattern="/^[ A-Za-z0-9_@./#&+-]*$/"
+                        style="width: 75%;" formControlName="licenseNumber" class="customMatInputHeader"
+                        autocomplete="off" matInput type="text">
+                  </mat-form-field>
+               </span>
+            </div>
+            <div class="col-sm-4 pr0 pl0" *ngIf="serialCustRefEnableDisbale==true">
+               <span class="inputLeftBorder">
+                  <mat-form-field class="mat-form-field-attributes" appearance="fill">
+                     <img class="mat-card-image imageLogo"
+                        src="../../../../../assets/org/brightstar/logos/Receiving-image/customerRef_icon.svg"
+                        alt="Photo of customerRef_icon">
+                     <mat-label class="labelmargin">Customer reference number</mat-label>
+                     <input (keydown.enter)="getRMAByCustomerRMA()" ng-pattern="/^[ A-Za-z0-9_@./#&+-]*$/"
+                        style="width: 75%;" formControlName="customerRefernceNumber" class="customMatInputHeader"
+                        autocomplete="off" matInput type="text">
+                  </mat-form-field>
+               </span>
+            </div>
+            <div class="col-sm-4 pr0 pl0" *ngIf="serialCustRefEnableDisbale==true">
+               <mat-form-field class="mat-form-field-attributes" appearance="fill">
+                  <img class="mat-card-image imageLogo"
+                     src="../../../../../assets/org/brightstar/logos/Receiving-image/serial_icon.svg"
+                     alt="Photo of serial_icon">
+                  <mat-label class="labelmargin">Serial Number</mat-label>
+                  <input (keydown.enter)="getRMABySerialNo()" ng-pattern="/^[ A-Za-z0-9_@./#&+-]*$/" style="width: 75%;"
+                     formControlName="serialNumber" class="customMatInputHeader" autocomplete="off" matInput
+                     type="text">
+               </mat-form-field>
+            </div>
+         </div>
+      </form>
+      <div class="containerSearched">
+         <p class="search-narrative" *ngIf="searchDisapper==true">
+            <span class="search-narrative-title">You have searched for - </span>
+            <span class="search-result">
+               {{this.successIconMessage}} - {{this.searchValue}}
+               <span class="narrative-close">
+                  <img style=" margin-top: 5px;" (click)="successIconClose()"
+                     src="../../../../../assets/org/brightstar/logos/Receiving-image/close.svg" />
+               </span>
+            </span>
+         </p>
+      </div>
+      <small class="customErrorContainer" *ngIf="apiError==true">
+         {{apierrorMessage}}
+      </small>
+      <a (click)="createDekitRequest()" style="font-size: 80%;" *ngIf="redirectDekitPage==true">
+         Click the link to follow Dekit TrackingId <b> {{this.trackingNo}}</b></a>
+   </div>
+</div>
+<br>
+<div *ngIf="mainContentShow==true" class="maincontentShow">
+   <span style=" flex-basis: 59.5%;"></span>
+   <button (click)="accordion.openAll()" mat-stroked-button class="accordianbutton">
+      <span>
+         <img style="margin-right: 8px;margin-top: -3px;  " class="expandicon"
+            src="../../../../../assets/org/brightstar/logos/Receiving-image/accordian_icon.svg" alt="Photo of Expand ">
+      </span>Expand All</button>
+   <app-grs-button performEventOnInit="true" (sendEvent)="serialEventHandler()"
+      *ngIf="isGetManufaturerRetrieved && isGetAllManufacturerRetrieved" style="margin-left: 47px;"
+      (click)="openhandset()"><img style="margin-right: 8px;margin-top: -3px;  " class="expandicon"
+         src="../../../../../assets/org/brightstar/logos/Receiving-image/changeHandset_icon.svg"
+         alt="Photo of Expand ">&nbsp;
+      Change
+      Handset Attributes
+   </app-grs-button>
+</div>
+<mat-accordion *ngIf="mainContentShow==true" [formGroup]="receiveRmaInputForm" multi>
+   <!-- #enddocregion basic-panel -->
+   <mat-expansion-panel [expanded]='true' style="margin: 2%; ">
+      <mat-expansion-panel-header class="mat-content-hints">
+         <mat-panel-title class="mat-tittle-styles">
+            <div>
+               <span>
+                  {{this.receiveRmaInputForm.get('channel').value}}
+               </span>
+               <br />
+               <small style="opacity: 0.5;">
+                  (license, rma, reference, IMEI, IDE PO#)
+               </small>
+            </div>
+         </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row" *ngIf="mainContentShow==true" [formGroup]="receiveRmaInputForm">
+         <div class="col-sm-4 attributeLabel">
+            <mat-form-field class="customFormFieldControl">
+               <mat-label>License plate number</mat-label>
+               <input formControlName="licenseNumber" readonly="width: 75%;" class="customMatInput" autocomplete="off"
+                  matInput type="text">
+            </mat-form-field>
+         </div>
+         <div class="col-sm-4 attributeLabel">
+            <mat-form-field class="customFormFieldControl">
+               <mat-label>RMA IMEI</mat-label>
+               <input formControlName="imei" readonly="width: 75%;" class="customMatInput" autocomplete="off" matInput
+                  type="text">
+            </mat-form-field>
+         </div>
+         <div class="col-sm-4">
+         </div>
+      </div>
+      <mat-card-title>Reference Numbers</mat-card-title>
+      <div class="row">
+         <div class="col-sm-4 attributeLabel">
+            <mat-form-field class="customFormFieldControl">
+               <mat-label>HQID/Customere reference</mat-label>
+               <input formControlName="customeritemreference" readonly="width: 75%;" class="customMatInput"
+                  autocomplete="off" matInput type="text">
+            </mat-form-field>
+         </div>
+         <div class="col-sm-4 attributeLabel" *ngIf="editImei==true">
+            <mat-form-field class="customFormFieldControl">
+               <mat-label>IMEI</mat-label>
+               <input (keyup.enter)="updateIMEI()" formControlName="imei" class="customMatInput" autocomplete="off"
+                  matInput type="text">
+            </mat-form-field>
+         </div>
+         <div class="col-sm-4 attributeLabel" *ngIf="editImei==false">
+            <mat-form-field class="customFormFieldControl">
+               <mat-label>IMEI</mat-label>
+               <input formControlName="imei" readonly="width: 75%;" class="customMatInput" autocomplete="off" matInput
+                  type="text">
+            </mat-form-field>
+         </div>
+         <div class="col-sm-4">
+            <mat-form-field class="customFormFieldControl">
+               <mat-label>IDE PO#</mat-label>
+               <input value="" readonly="width: 75%;" class="customMatInput" autocomplete="off" matInput type="text">
+            </mat-form-field>
+         </div>
+      </div>
+   </mat-expansion-panel>
+   <!-- #enddocregion basic-panel -->
+   <mat-expansion-panel style="margin: 2%; ">
+      <mat-expansion-panel-header>
+         <mat-panel-title class="mat-tittle-styles">
+            <div>
+               <span>
+                  Product Details
+               </span>
+               <br />
+               <small style="opacity: 0.5;">
+                  (description, manufacture, model, size, color, carrier)
+               </small>
+            </div>
+         </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row" *ngIf="mainContentShow==true" [formGroup]="receiveRmaInputForm">
+         <div class="col-sm-2 attributeLabel">
+            <div class="borderimg1">
+               <img class="mat-card-image" src="../../../../../assets/img/apple-iphone.jpg" alt="Photo of ">
+               <span class="size">Apple iphone 6s</span>
+            </div>
+         </div>
+         <div class="col-md-10 attributeLabel">
+            <div class="row">
+               <div class="col-md-4">
+                  <mat-form-field class="  customFormFieldControl">
+                     <mat-label>Description</mat-label>
+                     <input formControlName="description" readonly="width: 5%;" class="customMatInput"
+                        autocomplete="off" matInput type="text">
+                  </mat-form-field>
+               </div>
+               <div class="col-md-4">
+                  <mat-form-field class="  customFormFieldControl">
+                     <mat-label>Manufacture</mat-label>
+                     <input [value]="receiveRmaInputForm.get('manufacturer').value?.manufacturerDescription"
+                        readonly="width: 5%;" class="customMatInput" autocomplete="off" matInput type="text">
+                  </mat-form-field>
+               </div>
+               <div class="col-md-4">
+                  <mat-form-field class="  customFormFieldControl">
+                     <mat-label>Model</mat-label>
+                     <input [value]="receiveRmaInputForm.get('model').value?.modelDescription" readonly="width: 5%;"
+                        class="customMatInput" autocomplete="off" matInput type="text">
+                  </mat-form-field>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-4">
+                  <mat-form-field class=" customFormFieldControl">
+                     <mat-label>Size</mat-label>
+                     <input [value]="receiveRmaInputForm.get('memorySize').value?.memorySizeDescription"
+                        readonly="width: 5%;" class="customMatInput" autocomplete="off" matInput type="text">
+                  </mat-form-field>
+               </div>
+               <div class="col-md-4">
+                  <mat-form-field class="  customFormFieldControl">
+                     <mat-label>color</mat-label>
+                     <input [value]="receiveRmaInputForm.get('color').value?.colorDescription" readonly="width: 5%;"
+                        class="customMatInput" autocomplete="off" matInput type="text">
+                  </mat-form-field>
+               </div>
+               <div class="col-md-4">
+                  <mat-form-field class="  customFormFieldControl">
+                     <mat-label>carrier</mat-label>
+                     <input [value]="receiveRmaInputForm.get('carrier').value?.carrierDescription"
+                        readonly="width: 75%;" class="customMatInput" autocomplete="off" matInput type="text">
+                  </mat-form-field>
+               </div>
+            </div>
+         </div>
+      </div>
+   </mat-expansion-panel>
+   <mat-expansion-panel style="margin: 2%;" *ngIf="receivingConfig?.comments !== null">
+      <mat-expansion-panel-header>
+         <mat-panel-title class="mat-tittle-styles">
+            <div>
+               <span>
+                  Comments
+               </span>
+               <br />
+               <small style="opacity: 0.5;">
+                  (comments)
+               </small>
+            </div>
+         </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div *ngIf="mainContentShow==true" [formGroup]="receiveRmaInputForm">
+         <div class="col-sm-4 attributeLabel">
+            <mat-form-field appearance="outline" class="customFormFieldControl">
+               <mat-label>Comments</mat-label>
+               <mat-select (selectionChange)="handleDropdownChange($event)">
+                  <!-- If value comes in json format make sure to change the [value]-->
+                  <mat-option *ngFor="let val of receivingConfig?.comments; let index= i" [value]="val">
+                     {{val.comment}}
+                  </mat-option>
+               </mat-select>
+            </mat-form-field>
+         </div>
+      </div>
+   </mat-expansion-panel>
+   <div class="customFlexContainer">
+      <span class="example-fill-remaining-space"></span>
+      <div class="attributeLabel">
+         <app-grs-button (click)="saveReceivingData()" [isButtonDisabled]="receiveRmaInputForm.invalid" style="margin: 24px;">Save</app-grs-button>
+      </div>
+   </div>
+</mat-accordion>
+<br>
+<div class="imageStyles" *ngIf="imageContentShow==true">
+   <div class="innerTextStyles">
+      Access the Receiving by license plate/customer no
+   </div>
+</div>
+<div>
+   <ng-template #updateHandsetTemplate>
+   </ng-template>
+</div>
+<app-grs-alerts></app-grs-alerts>

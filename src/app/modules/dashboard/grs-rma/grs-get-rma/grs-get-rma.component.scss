@@ -1,0 +1,256 @@
+.rmaInitialContainer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3%;
+}
+
+.rmaBodyContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.rmaButton, .customErrorContainer {
+    margin-left: 18%;
+}
+
+.rmaSearchIcon {
+    position: absolute;
+    right: 0;
+    top: 0px;
+    cursor: pointer;
+    color: #df4b47;
+}
+
+.customErrorContainer {
+    color: red;
+    font-weight: bold;
+    margin-top: -1%;
+    width: 100%;
+    display: block;
+}
+
+.rmaMainContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    padding-right: 1%;
+}
+
+.rmaLineContainer {
+    margin: 1%; 
+    padding: 2%;
+}
+
+.rmaItemMasterContainer {
+    display: flex; 
+    flex-direction: column; 
+    border: 1px solid #dddddd; 
+    border-radius: 5px; 
+    margin: 1%; 
+    padding: 3%;
+}
+
+.rmaItemContainer {
+  background-color: #EEECEC;
+  border-radius: 10px;
+  margin-bottom: 2%;
+  padding: 3%;
+}
+
+.customRMALabelColor {
+    color: black;
+}
+
+.rmaItemDetailContainer {
+    display: flex; 
+    flex-direction: column;
+}
+
+.customFormFieldControl {
+    min-width: 80px; 
+    max-width: 150px; 
+    padding: 3px;
+}
+
+.rmaMasterHeaderContainer {
+  padding: 3%;
+  background-color: #dddddd;
+}
+
+.rmaCustomerHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #dddddd;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+
+ .rmaNumberFieldContainer, .trackingNumberContainer {
+    margin-left: 4%;
+  }
+
+.rmaCustomerLineContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2%;
+}
+
+.amountContainer {
+  margin-top: 1%;
+}
+
+.rmaCustomerLineContainer {
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+}
+
+.applyMatFormColorCode {
+    // color: rgba(0,0,0,.38);
+    color: black;
+}
+
+.rmaSerialNumberContainer {
+    display: inline-block; 
+    color: rgba(0,0,0,.38);
+}
+
+.rmaSerialHeader {
+    display: block; 
+    font-family: 'Roboto'; 
+    color: black; 
+    font-size: 12px; 
+    padding: 10px;
+}
+
+.rmaSerialValue {
+    margin-left: 10px; 
+    font-size: 15px; 
+    cursor: pointer; 
+    color: blue; 
+    padding-bottom: 15px; 
+    margin-right: 10px;
+}
+
+
+.centerText {
+    text-align: center;
+}
+
+.trackingNumberInnerContainer {
+    display: flex; 
+    flex-direction: row; 
+    padding-top: 3%; 
+    margin-top: 1%;
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-disabled .mat-form-field-outline {
+    border-radius: 5px;
+    color: black;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .rmaInitialContainer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3%;
+        align-items: center;
+    }
+
+    .rmaCustomerHeaderContainer {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #dddddd;
+      background-color: #ffffff;
+      border-radius: 10px;
+    }
+
+    .searchHeader {
+        margin-left: 18%;
+        padding-bottom: 2%;
+    }
+
+    .rmaNumberFieldContainer, .rmaCustomerHeaderContainer, .rmaCustomerLineContainer, .rmaHeader, .searchHeader , .rmaInputFieldParent {
+        text-align: center;
+    }
+
+    .trackingNumberInnerContainer, .rmaBodyContainer {
+        justify-content: center;
+    }
+
+    .rmaButton {
+        margin-left: 40%;
+    }
+    
+}
+
+.progressLoader {
+    color: red;
+    font-size: 5px;
+    margin: 30px auto;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    position: relative;
+    text-indent: -9999em;
+    -webkit-animation: load4 1.3s infinite linear;
+    animation: load4 1.3s infinite linear;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  @-webkit-keyframes load4 {
+    0%,
+    100% {
+      box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+    12.5% {
+      box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    25% {
+      box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    37.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+      box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+      box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+  }
+  @keyframes load4 {
+    0%,
+    100% {
+      box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0;
+    }
+    12.5% {
+      box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    25% {
+      box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em;
+    }
+    37.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    50% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em;
+    }
+    62.5% {
+      box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em;
+    }
+    75% {
+      box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0;
+    }
+    87.5% {
+      box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
+    }
+  }
+  

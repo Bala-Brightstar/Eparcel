@@ -1,0 +1,48 @@
+.common-alerts {
+    max-width: 400px;
+    right: 1rem;
+    bottom: 1rem;
+    margin-bottom: 0;
+    z-index: 99999;
+    font-size: 15px;
+    position: fixed;
+  }
+  .grsalert-warning {
+    border: 1px solid #856404;
+    .messageCloseButton {
+      font-size: 25px; 
+      color: #856404;
+      margin-left: 10px !important;
+      margin-top: -2px !important;
+    }
+  }
+  
+  .alert-primary {
+    border: 1px solid #004085;
+    .messageCloseButton {
+      font-size: 25px; 
+      color: #004085;
+      margin-left: 10px !important;
+      margin-top: -2px !important;
+    }
+  }
+  
+  .alert-success {
+    border: 1px solid #155724;
+    .messageCloseButton {
+      font-size: 25px; 
+      color: #155724;
+      margin-left: 10px !important;
+      margin-top: -2px !important;
+    }
+  }
+  
+  .alert-danger {
+    border: 1px solid #721c24;
+    .messageCloseButton {
+      font-size: 25px; 
+      color: #721c24;
+      margin-left: 10px !important;
+      margin-top: -2px !important;
+    }
+  }  

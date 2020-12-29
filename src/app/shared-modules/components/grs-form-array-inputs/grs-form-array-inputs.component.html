@@ -1,0 +1,21 @@
+<div [formGroup]="customTypeForm"  class="custominputContainer">
+    <div>
+        <mat-card>
+           
+        <mat-form-field class="customMat" *ngFor="let unit of formFieldsFinder; index as i">
+            <mat-label>{{customArrayLabel[i]}}</mat-label>
+            <!-- <div class="unitContainer"> -->
+                <div [formArrayName]="customFormArrayName" class="customFormArrayName">
+                    <mat-card-content>
+                    <input matInput [formControlName]="i" [placeholder]="customPlaceHolder"
+                        (keyup.enter)="customSubmit(unit, i)">
+                        </mat-card-content>
+                </div>
+            <!-- </div> -->
+    
+        </mat-form-field>
+
+    </mat-card>
+    </div>
+</div>
+<br>

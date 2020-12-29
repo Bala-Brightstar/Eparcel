@@ -1,0 +1,122 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "Brightstar Azure Devops Agent - Application IAM Role V1.0.0",
+    "Parameters": {
+        "BrightstarRegion": {
+            "AllowedValues": [
+                "Americas",
+                "APAC",
+                "EMEA",
+                "Sandbox"
+            ],
+            "Type": "String"
+        }
+    },
+    "Mappings": {
+        "BrightstarRegion": {
+            "Americas": {
+                "MasterAccountID": "751088125777"
+            },
+            "APAC": {
+                "MasterAccountID": "943634163513"
+            },
+            "EMEA": {
+                "MasterAccountID": "462980225386"
+            },
+            "Sandbox": {
+                "MasterAccountID": "073261043889"
+            }
+        }
+    },
+    "Resources": {
+        "RoleAzureDevopsGRS": {
+            "Type": "AWS::IAM::Role",
+            "Properties": {
+                "RoleName": "local_azuredevops_grs_grs_fe1",
+                "AssumeRolePolicyDocument": {
+                    "Version": "2012-10-17",
+                    "Statement": {
+                        "Effect": "Allow",
+                        "Principal": {
+                            "AWS": {
+                                "Fn::Sub": [
+                                    "arn:aws:iam::${MasterAccountID}:role/ec2_azuredevops_master",
+                                    {
+                                        "MasterAccountID": {
+                                            "Fn::FindInMap": [
+                                                "BrightstarRegion",
+                                                {
+                                                    "Ref": "BrightstarRegion"
+                                                },
+                                                "MasterAccountID"
+                                            ]
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        "Action": "sts:AssumeRole"
+                    }
+                },
+                "Path": "/",
+                "Policies": [
+                    {
+                        "PolicyName": "application",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "amplify:*",
+                                        "cloudformation:*",
+                                        "cloudfront:*",
+                                        "cloudwatch:*",
+                                        "lambda:*",
+                                        "s3:*"
+                                    ],
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "PolicyName": "iam",
+                        "PolicyDocument": {
+                            "Version": "2012-10-17",
+                            "Statement": [
+                                {
+                                    "Effect": "Allow",
+                                    "Action": [
+                                        "iam:UpdateAssumeRolePolicy",
+                                        "iam:UntagRole",
+                                        "iam:TagRole",
+                                        "iam:PutRolePermissionsBoundary",
+                                        "iam:RemoveRoleFromInstanceProfile",
+                                        "iam:UpdateRoleDescription",
+                                        "iam:DeletePolicy",
+                                        "iam:CreateRole",
+                                        "iam:DeleteRole",
+                                        "iam:AttachRolePolicy",
+                                        "iam:PutRolePolicy",
+                                        "iam:CreatePolicy",
+                                        "iam:PassRole",
+                                        "iam:DetachRolePolicy",
+                                        "iam:DeleteRolePolicy",
+                                        "iam:UpdateRole",
+                                        "iam:CreatePolicyVersion",
+                                        "iam:DeletePolicyVersion",
+                                        "iam:SetDefaultPolicyVersion",
+                                        "iam:GetRole"
+                                    ],
+                                    "Resource": "*"
+                                }
+                            ]
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "Outputs": {}
+}

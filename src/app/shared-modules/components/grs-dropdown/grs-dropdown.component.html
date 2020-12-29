@@ -1,0 +1,14 @@
+<div class="row form-group">
+  <label *ngIf="isDisplayHeader === true" class="control-label col-sm-2">{{dropdownLabel}}</label>
+  <div class="col-sm-10">
+    <mat-form-field appearance="outline">
+      <mat-label #ref>{{dropdownLabel}}</mat-label>
+      <mat-select (selectionChange)="handleDropdownChange($event)" [(value)]="selected">
+        <!-- If value comes in json format make sure to change the [value]-->
+        <mat-option *ngFor="let val of listValues; let index= i" [value]="val">
+          {{val.value}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

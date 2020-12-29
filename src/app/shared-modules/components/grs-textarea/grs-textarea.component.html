@@ -1,0 +1,6 @@
+<mat-form-field [formGroup]="commentFormGroup">
+    <mat-label>{{textArea}}</mat-label>
+    <textarea matInput class="customMatInput" autocomplete="off" [type]="inputType"
+     [formControlName]="formCtrlComment"
+        placeholder="Enter comment"></textarea>
+</mat-form-field>

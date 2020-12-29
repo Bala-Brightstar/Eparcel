@@ -1,0 +1,31 @@
+# this is an auto generated file. This will be overwritten
+query GetUserPreferences($useruuid: String!) {
+  getUserPreferences(useruuid: $useruuid) {
+    useruuid
+    preferences {
+      timezone
+      locale
+    }
+  }
+}
+query GetAsn($uuid: String!) {
+  getAsn(uuid: $uuid) {
+    uuid
+    srcrefid
+    srcparentrefid
+    srcchannelid
+    srcchannelid2
+  }
+}
+query ListAsns($searchAsnInput: SearchAsnInput) {
+  listAsns(searchAsnInput: $searchAsnInput) {
+    total
+    asnList {
+      uuid
+      srcrefid
+      srcparentrefid
+      srcchannelid
+      srcchannelid2
+    }
+  }
+}

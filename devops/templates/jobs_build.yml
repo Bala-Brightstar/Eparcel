@@ -1,0 +1,27 @@
+parameters:
+  envid: 'unknown'
+  awsconfigfile: '$(Build.SourcesDirectory)/devops/scripts/aws-configure.sh'
+  region: 'unknown'
+  deployrolearn: 'unknown'
+  profile_name: 'unknown'
+
+jobs:
+
+- job: execute_build
+  pool:
+    name: 'Global-DevOps-Americas-Linux'
+
+  steps:
+
+  - task: DeleteFiles@1
+    displayName: 'Wipe source folder'
+    inputs:
+      RemoveSourceFolder: true
+
+  - checkout: self
+    clean: true
+    path: 's/grsc'
+    displayName: 'Check out repository'
+  
+  - script: bash '${{ parameters.awsconfigfile }}' '${{ parameters.region }}' '${{ parameters.deployrolearn }}' '${{ parameters.profile_name }}'
+    displayName: 'Aws Cli Configure'

@@ -1,0 +1,34 @@
+{
+    "baseloader": {
+        "sidenav": {
+            "expandedMenuName": "MAIN MENU",
+            "shortMenuName": "MENU",
+            "showCollapsedMenuIcon": "keyboard_arrow_left",
+            "showexpandedMenuIcon": "keyboard_arrow_right",
+            "shortBrightstarLogo": "../assets/org/brightstar/logos/sidenav-logo/Brightstar-logo-sm.svg",
+            "brightstarLogo": "../assets/org/brightstar/logos/sidenav-logo/Brightstar-logo-lg.svg",
+            "menus": {
+                "admin": {
+                    "title": "Telstra E-parcel",
+                    "submenus": {
+                        "location": "Set Location"
+                    }
+                },
+                "dekit": {
+                    "title": "Dekit",
+                    "submenus": {
+                        "dekit": "Dekit",
+                        "getDekit": "Get Dekit"
+                    }
+                },
+                "rma": {
+                    "title": "RMA",
+                    "submenus": {
+                        "getRMA": "Get RMA",
+                        "receiveRMA": "Receive RMA"
+                    }
+                }
+            }
+        }
+    }
+}

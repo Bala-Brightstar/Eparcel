@@ -1,0 +1,41 @@
+parameters:
+  envid: 'unknown'
+  profile_name: 'unknown'
+  deploywebappscript: '$(Build.SourcesDirectory)/devops/scripts/deploy-webapp.sh'
+  webappname: 'unknown'
+  deploywebapps3bucket: 'unknown'
+  cfdistributionid: 'unknown'
+  awsconfigfile: '$(Build.SourcesDirectory)/devops/scripts/aws-configure.sh'
+  deployrolearn: 'unknown'
+  region: 'unknown'
+
+jobs:
+- deployment: deploymentjob
+  displayName: Run deployment
+  pool:
+    name: 'Global-DevOps-Americas-Linux'
+  
+  environment: ${{ parameters.envid }}
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        
+        - task: DeleteFiles@1
+          displayName: 'Wipe source folder'
+          inputs:
+            RemoveSourceFolder: true
+
+        - checkout: self
+          clean: true
+          path: 's/grsc'
+          displayName: 'Check out repository'
+          persistCredentials: true
+
+        - script: |
+            bash '${{ parameters.awsconfigfile }}' '${{ parameters.region }}' '${{ parameters.deployrolearn }}' '${{ parameters.profile_name }}'
+          displayName: 'Aws Cli Configure'
+
+        - script: |
+            bash '${{ parameters.deploywebappscript }}' '${{ parameters.envid }}' '${{ parameters.profile_name }}' '${{ parameters.deploywebapps3bucket }}' '${{ parameters.webappname }}' '${{ parameters.cfdistributionid }}'
+          displayName: 'Deploy WebApp'

@@ -1,0 +1,4 @@
+<button [disabled]="isButtonDisabled" [ngStyle]="{'background-color': applyDynamicColor}" [ngClass]="applyDynamicClass"
+    mat-flat-button class='colourButton' [class.buttonDisabled]="isButtonDisabled">
+    <ng-content></ng-content>
+</button>

@@ -1,0 +1,18 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateAsn {
+  onCreateAsn {
+    uuid
+    srcrefid
+    srcparentrefid
+    srcchannelid
+    srcchannelid2
+  }
+}
+subscription OnCreateInspection {
+  onCreateInspection {
+    uuid
+    asnuuid
+    sku
+    deviceid
+  }
+}

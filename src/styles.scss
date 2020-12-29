@@ -1,0 +1,356 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+ /*Univers Font*/
+@font-face {
+  font-family: 'Univers 55';
+  src: url('./assets/font/UniversLTPro-55Roman.eot');
+  src: url('./assets/font/UniversLTPro-55Roman.eot?#iefix') format('embedded-opentype'),
+  url('./assets/font/UniversLTPro-55Roman.woff') format('woff'),
+  url('./assets/font/UniversLTPro-55Roman.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Univers 65';
+  src: url('./assets/font/UniversLTPro-65Bold.eot');
+  src: url('./assets/font/UniversLTPro-65Bold.eot?#iefix') format('embedded-opentype'),
+  url('./assets/font/UniversLTPro-65Bold.woff') format('woff'),
+  url('./assets/font/UniversLTPro-65Bold.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Univers 45';
+  src: url('./assets/font/UniversLTPro-45Light.eot');
+  src: url('./assets/font/UniversLTPro-45Light.eot?#iefix') format('embedded-opentype'),
+  url('./assets/font/UniversLTPro-45Light.woff') format('woff'),
+  url('./assets/font/UniversLTPro-45Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Adjusting the color of Amplify UI Login  - begin */
+:root {
+    --amplify-primary-color: #ff7359;
+    --amplify-primary-tint: #ff7359;
+    --amplify-primary-shade: #e0573e;
+    // --amplify-font-family: 'Roboto';
+    --bsfont45: 'Univers 45';
+    --bsfont55: 'Univers 55';
+    --bsfont65: 'Univers 65';
+  }
+/* Adjusting the color of Amplify UI Login  - begin */
+html, body { height: 100%; }
+body { margin: 0; font-family: var(--bsfont45) !important ; overflow-x: hidden;}
+.pr0 {
+  padding-right: 0 !important
+  }
+  .pl0 {
+  padding-left: 0 !important
+  }
+  .pb0 {
+  padding-bottom: 0 !important
+  }
+  .pt0 {
+  padding-top: 0 !important
+  }
+/* Adjusting the size of mat-input fields  - begin */
+mat-form-field.mat-form-field.mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix  { padding: 0.4em 0px }
+mat-form-field.mat-form-field.mat-form-field-appearance-outline > div.mat-form-field-wrapper > div.mat-form-field-flex > div.mat-form-field-infix > span.mat-form-field-label-wrapper { top: -1.5em; }
+.mat-input-element {
+  position: relative;
+  top:  -0.4em; /* Adjust accordingly to keep placeholder/input text vertically centered. */
+}
+mat-label {
+  font-size: 15px;
+}
+
+/* Adjusting the size of mat-input fields  - end */
+
+/* Avoid Scroll in pages  - start */
+.mat-form-field-appearance-outline .mat-form-field-wrapper {
+  margin:  0 !important;
+}
+
+.mat-form-field-wrapper {
+  padding-bottom: 1 !important;
+}
+/* Avoid Scroll in pages  - end */
+
+.dekit-content .mat-form-field{
+  display: inline-block;
+  width: 100%;
+  max-width: 270px;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1;
+
+}
+.dekit-content .mat-form-field-wrapper{
+  padding-bottom: 0;
+}
+.form-fields{
+  display: inline-block;
+}
+.units-section{
+   border: solid 2px rgba(0,0,0,.12);
+    border-radius: 10px;
+    margin-left: 27px;
+}
+.unit-wrapper .units-section{
+  border-radius: 10px 10px 0 0;
+ }
+.hqid-wrapper .units-section{
+  border-radius: 0 0 10px 10px;
+  border-top: none;
+}
+.devicefield {
+  display: inline-block;
+  width: 50%;
+  margin-bottom: 5px;
+}
+.unitTypeDisplay{
+  padding-top: 8px;
+  padding-bottom: 15px;
+}
+.dekit-content .unitTypeDisplay .mat-form-field{
+  max-width: 182px;
+}
+.unitTypeDisplay-wrapper.form-group{
+  margin-bottom: 0 !important;
+}
+.unitTypeDisplay:not(:last-child),.deviceList-wrapper .deviceList:not(:last-child){
+  border-right: 2px solid #dddddd;
+}
+.unitTypeDisplay label.control-label {
+  font-size: 14px;
+  padding-top: 12px;
+}
+.deviceList-wrapper .deviceList{
+  padding-top: 0px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 15px;
+}
+.unitTypeDisplay {
+  text-align: center;
+
+}
+.unitTypeContainer.hqid-wrapper{
+  margin-bottom: 15px;
+}
+.hqid-wrapper .unitTypeDisplay {
+  text-align: left;
+
+}
+.dekit-content .hqid-wrapper .unitTypeDisplay .mat-form-field{
+  max-width: 160px;
+}
+.form-fields label{
+  vertical-align: top;
+}
+.mat-drawer-container{
+  color: #666666;
+  background: #ffffff;
+}
+.hqid-wrapper .form-fields{
+  margin-bottom: 10px;
+}
+
+.page-wrapper{
+  box-shadow: 0 0 5px 0 rgba(var(--palette-neutral-10,218, 218, 218),1);
+  padding: 15px;
+  padding-top: 0%;
+  transition: box-shadow .2s ease-in-out;
+  margin: 10px 25px;
+}
+.page-title{
+  border-bottom: 1px solid #dddddd;
+  background: rgba(0, 0, 0, 0.04);
+  h4{
+    margin-bottom: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+  }
+}
+.unitTypeContainer{
+  margin-bottom: 0;
+}
+.deviceList-wrapper{
+  margin-bottom: 10px !important;
+}
+.customMatInput{
+  font-size: 14px !important;
+}
+
+::ng-deep .mat-dialog-container{
+  padding: 0;
+}
+
+.mat-progress-bar[mode=indeterminate] .mat-progress-bar-secondary.mat-progress-bar-fill::after, .mat-progress-bar[mode=query] .mat-progress-bar-secondary.mat-progress-bar-fill::after {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+   animation: mat-progress-bar-secondary-indeterminate-scale 2s infinite linear;
+  background-color: #df4b47 !important;
+}
+.mat-progress-bar-fill::after {
+  background-color: #df4b47
+}
+
+.dekit-content {
+  padding-top: 10px;
+}
+.form-group {
+  margin-bottom: 15px !important;
+}
+.control-label {
+  padding-top: 7px;
+  margin-bottom: 0;
+  text-align: left;
+}
+label {
+  display: inline-block;
+  max-width: 100%;
+  margin-bottom: 5px;
+  font-weight: 700;
+  color: #666;
+}
+
+.displayFlex{
+  display: flex;
+}
+.trackingErrorInfo{
+    margin: 1%;
+    padding: 1%;
+    color:#cf102d;
+  }
+  .validationErrorInfo{
+    margin: 1%;
+    padding: 1%;
+    color:#cf102d;
+  }
+  .dekitChannelRadioContainer{
+    padding-top: 5px;
+}
+.hqid-wrapper label.col-sm-2{
+  visibility: hidden;
+}
+
+.save-dekit .colourButton{
+  margin-left: 15px;
+}
+.saveform{
+  margin-left: 2px;
+  padding-top: 12px;
+}
+
+.customRadio .mat-radio-label-content{
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.page-title h4{
+  color: #cf102d;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple{
+  background-color: #cf102d;
+}
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+  border-color: #cf102d;
+}
+.progressBarContainer{
+  padding: 0px !important;
+  display: inline-block;
+}
+.mat-snack-bar-container {
+  color: rgb(255 255 255);
+  background: #cf102d;
+  box-shadow: 0 3px 20px 10px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);
+}
+
+.mat-simple-snackbar-action button {
+  max-height: 36px;
+  min-width: 0;
+  color: white;
+}
+
+.ng-invalid.required-field .mat-form-field-outline{
+  color:#cf102d !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px #cecdcd;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:#cecdcd;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #cecdcd;
+}
+
+/*Spinner CSS*/
+.la-line-spin-fade-rotating.la-2x {
+  display: none !important;
+}
+
+.overlay.ng-tns-c1-0.ng-trigger.ng-trigger-fadeIn.ng-star-inserted {
+  background-color: rgba(64,58,96,0.85) !important;
+}
+
+.loading-text {
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%,-50%)!important;
+}
+button:focus {
+  outline: none !important;
+}
+.hideGreyOut{
+  background-color: transparent!important;
+}
+
+.snackbarcss{
+  background-color: #2dc768 !important;
+  position: relative;
+  top: -350px;
+  left: 100px;
+}
+
+.snackbarcsserror{
+  background-color: #c7372d !important;
+  position: relative;
+  top: -350px;
+  left: 100px;
+}
+
+@media only screen and ( max-width:768px ){
+    .snackbarcsserror{
+      background-color: #c7372d !important;
+      position: relative;
+      top: -1050px !important;
+      left: 40px;
+    }
+    .snackbarcss{
+      background-color: #2dc768 !important;
+      position: relative;
+      top: -1050px !important;
+      left: 40px;
+    }
+
+}

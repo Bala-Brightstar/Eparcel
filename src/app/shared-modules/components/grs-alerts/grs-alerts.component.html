@@ -1,0 +1,6 @@
+<div class="grsAlertContainer">
+    <div *ngIf="alertService.isShowMessage$ | async" [ngClass]="alertService.getAlert$ | async" class="alert common-alerts" role="alert">
+        {{alertService.getMessage$ | async}} <button type="button" class="close messageCloseButton" (click)="closeMessage()" aria-label="Close">
+           <span aria-hidden="true">&times;</span></button>
+      </div>
+</div>

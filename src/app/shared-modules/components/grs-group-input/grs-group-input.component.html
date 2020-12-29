@@ -1,0 +1,86 @@
+<div *ngIf="populateBasedOnSpecificIndex == true; then populateSpecificForm else populateFullForm">
+</div>
+
+<ng-template #populateSpecificForm>
+    <div class="testTemplate 111">
+        <form [formGroup]="customFormGroup" class="groupContainer">
+            <div class="row form-group deviceList-wrapper" [formArrayName]="formHeader">
+                <div class="col-sm-6 deviceList"
+                    *ngFor="let dev of customFormGroup.controls[formHeader].controls;  let j = index"
+                    [formGroupName]="j">
+                    <ng-container *ngIf="j == indexer">
+                        <div class="deviceFieldsArrangement" [formArrayName]="formHeaderArrayValues"
+                            *ngIf="dev.get(formHeaderArrayValues).controls.length > 0">
+                            <div class="deviceFieldContainer">
+                                <div *ngFor="let test of dev.get(formHeaderArrayValues).controls;  let k = index"
+                                    class="devicefield">
+                                    <ng-container *ngIf="customLabel.length > 0 else commonlabel">
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>{{customLabel[j]?.value}}</mat-label>
+                                            <input #val autocomplete="off" matInput [placeholder]="customPlaceHolder"
+                                                [formControlName]="k"
+                                                (keyup.enter)="submitDeviceIDValues(j, val.value)">
+                                        </mat-form-field>
+                                    </ng-container>
+                                    <ng-template #commonlabel>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>{{commonLabel}}</mat-label>
+                                            <input #val autocomplete="off" matInput [placeholder]="customPlaceHolder"
+                                                [formControlName]="k"
+                                                (keyup.enter)="submitDeviceIDValues(j, val.value)">
+                                        </mat-form-field>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+            </div>
+        </form>
+    </div>
+</ng-template>
+<ng-template #populateFullForm>
+
+    <div class="testTemplate unitTypeContainer row" [ngClass]="customClass">
+        <label class="control-label col-sm-2">Unit Type</label>
+        <div class="col-sm-9 units-section">
+            <form [formGroup]="customFormGroup" class="groupContainer">
+                <div class="unitTypeDisplay-wrapper row form-group" [formArrayName]="formHeader">
+                    <div class="unitTypeDisplay col-sm-6"
+                        *ngFor="let dev of customFormGroup.controls[formHeader].controls;  let j = index"
+                        [formGroupName]="j">
+                        <div class="deviceFieldsArrangement" [formArrayName]="formHeaderArrayValues"
+                            *ngIf="dev.get(formHeaderArrayValues).controls.length > 0">
+                            <div class="deviceFieldContainer">
+                                <div *ngFor="let test of dev.get(formHeaderArrayValues).controls;  let k = index"
+                                    class="form-fields">
+
+                                    <ng-container *ngIf="customLabel.length > 0 else cool">
+                                        <label class="control-label">{{customLabel[j]?.value}}</label>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>{{customLabel[j]?.value}}</mat-label>
+                                            <input #val autocomplete="off"  maxlength="1" matInput [placeholder]="customPlaceHolder"
+                                                [formControlName]="k"
+                                                (keyup.enter)="submitDeviceIDValues(j, val.value)"
+                                                (keypress)=_keyPressunits($event)>
+                                        </mat-form-field>
+                                    </ng-container>
+                                    <ng-template #cool>
+                                        <mat-form-field appearance="outline">
+                                            <mat-label>{{commonLabel}}</mat-label>
+                                            <input #val autocomplete="off"   matInput [placeholder]="customPlaceHolder"
+                                                [formControlName]="k"
+                                                (keyup.enter)="submitDeviceIDValues(j, val.value)"
+                                                [minlength]="fieldMinLength" [maxlength]="fieldMaxLength">
+                                        </mat-form-field>
+                                    </ng-template>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</ng-template>

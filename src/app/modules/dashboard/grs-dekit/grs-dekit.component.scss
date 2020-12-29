@@ -1,0 +1,71 @@
+.dekitContainer {
+    display: flex;
+    flex-direction: column;
+    margin: 5% 5%;
+}
+ 
+.dekitBody{
+    margin-top: 3%;
+}
+ 
+.dekitInputContainer, .dekitChannelRadioContainer, .dekitChannelDropdownContainer, .boxComplianceContainer{
+    display: flex;
+    flex-direction: row;
+}
+ 
+.dekitChannelRadioContainer {
+    margin-bottom: 5%
+}
+ 
+.trackingErrorInfo{
+    margin: 1%;
+    padding: 1%;
+    color: red;
+}
+ 
+.unitTypeDisplay {
+    display: flex;
+    flex-direction: rows;
+    margin: 5px 5px 5px 0px;
+    flex-wrap: wrap;
+}
+ 
+.deviceFieldsArrangement{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 5px 5px 0px;
+    flex-wrap: wrap;
+    border: solid 2px rgba(0,0,0,.12);
+    border-radius: 10px;
+    padding: 4% 1% 1% 1%;
+}
+ 
+.displayFlex{
+    display: flex;
+}
+ 
+.deviceHeader{
+    font-weight: bold;
+    padding: 1%;
+    text-align: center;
+}
+ 
+.deviceFieldContainer{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+ 
+.save-dekit .colourButton{
+    margin-left:15px;
+}
+.validationErrorInfoHQID {
+    margin: 18%;
+    padding: 1%;
+    color: #cf102d;
+}
+.validationErrorInfounit {
+    margin: 18%;
+    padding: 1%;
+    color: #cf102d;
+}

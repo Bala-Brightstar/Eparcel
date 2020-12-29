@@ -1,0 +1,18 @@
+name: $(SourceBranchName)_$(BuildID)
+
+trigger:
+- environment/ueouatfgo
+
+variables:
+  envid: 'ueouatfgo'
+
+stages:
+- stage: build
+  jobs:
+  - template: ../templates/jobs_build.yml
+
+- stage: deploy
+  jobs:
+  - template: ../templates/jobs_deployment.yml
+    parameters:
+      envid: '$(envid)' 

@@ -1,0 +1,28 @@
+<div class="parentLocationContainer">
+    <div class="locationHeader">
+        <strong>Choose a warehouse location</strong>
+    </div>
+    <div class="locationContainer">
+        <div style="margin-top: 10px;">
+            <strong>Choose a location: </strong>
+        </div>
+        <div style="margin-left: 10px;">
+            <app-grs-dropdown (dropDownValue)="setLocation($event)" [channelDropdown]="getListOfLocations" [dropdownLabel]="label" isDisplayHeader="false">
+            </app-grs-dropdown>
+        </div>
+    </div>
+    <div class="buttonContainer">
+        <app-grs-button (click)="selectLocation()" [applyDynamicColor]="buttonColor">Set Location</app-grs-button>
+    </div>
+
+</div>
+
+<div class="noteContainer">
+    <div>
+        <small class="noteText">Default location upon login: Dallas</small>
+    </div>
+    <div style="margin-top: 20px;">
+        <small class="noteText">Current location set to: {{selectedLocation.value}}</small>
+    </div>
+</div>
+<app-grs-alerts></app-grs-alerts>

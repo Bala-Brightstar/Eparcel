@@ -1,0 +1,68 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav position="end" #drawer class="sidenav" fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'" [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="openhandset" style="width: 258px;">
+    <div class="handsetMainContainer">
+      <div class="closehandsetNav">
+        <span class="material-icons" style="cursor: pointer;" (click)="closeHandSet();">close</span>
+      </div>
+      <div style="text-align: center; font-weight: bold;">
+        Handset Attributes
+      </div>
+      <div *ngIf="showErrorMessage" class="alert alert-danger" style="margin-top: 2%;">
+        <strong>{{formErrorMessage}}</strong>
+      </div>
+      <div>
+        <mat-nav-list style="padding-top: 21px; ">
+          <a mat-list-item class="handsetListAttributes">
+            <app-grs-auto-complete [inputLabel]="manufacturerLabel" (selectedValue)="handleSelectionChangeEvent($event)"
+              [formCtrlName]="manufacturerDescriptionValue" inputString="manufacturerDescription" searchWithInput="true"  [value]="manufacturerDescriptionValue.value?.manufacturerDescription
+              " [handsetAttributeValue]="manufacturerValue">
+            </app-grs-auto-complete>
+          </a>
+          <div *ngIf="isShowModelAttributes">
+            <a mat-list-item class="handsetListAttributes">
+              <app-grs-auto-complete [inputLabel]="modelLabel" (selectedValue)="handleSelectionChangeEvent($event)"
+                [formCtrlName]="modelDescriptionValue" [handsetAttributeValue]="modelValue">
+              </app-grs-auto-complete>
+            </a>
+            <a mat-list-item class="handsetListAttributes">
+              <app-grs-auto-complete [inputLabel]="sizeLabel" (selectedValue)="handleSelectionChangeEvent($event)"
+                [formCtrlName]="sizeDescriptionValue" [handsetAttributeValue]="sizeValue">
+              </app-grs-auto-complete>
+            </a>
+
+            <a mat-list-item class="handsetListAttributes">
+              <app-grs-auto-complete [inputLabel]="colorLabel" (selectedValue)="handleSelectionChangeEvent($event)"
+                [formCtrlName]="colorDescriptionValue" [handsetAttributeValue]="colorValue">
+              </app-grs-auto-complete>
+            </a>
+            <a mat-list-item class="handsetListAttributes">
+              <app-grs-auto-complete [inputLabel]="carrierLabel" (selectedValue)="handleSelectionChangeEvent($event)"
+                [formCtrlName]="carrierDescriptionValue" [handsetAttributeValue]="carrierValue">
+              </app-grs-auto-complete>
+            </a>
+            <a mat-list-item class="handsetListAttributes partNumberContainer">
+              <mat-form-field class="">
+                <mat-label>Part Number</mat-label>
+                <input class="partNumberSize" disabled="true" [value]="partDescriptionValue.value" autocomplete="off" matInput type="text">
+              </mat-form-field>
+            </a>
+          </div>
+          <ng-container #spinLoader *ngIf="isShowModelAttributes === false">
+            <div class="lds-hourglass"></div>
+            <div class="centerText" style="margin-left: 40px;">Fetching Results...</div>
+          </ng-container>
+        </mat-nav-list>
+      </div>
+      <div class="handsetButtonContainer">
+        <div class="handsetButtonInnerContainer">
+          <app-grs-button [applyDynamicClass]="handsetUpdate" id="handsetUpdate" (click)="updateHandsetAttributes();">
+            Update</app-grs-button>
+          <app-grs-button applyDynamicColor="#666666" [applyDynamicClass]="handsetCancel" id="handsetCancel"
+            (click)="toggleHandset();">Cancel</app-grs-button>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+</mat-sidenav-container>

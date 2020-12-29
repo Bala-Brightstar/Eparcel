@@ -1,0 +1,3 @@
+<mat-radio-group aria-label="Select an radio" (change)="handleRadioEvent($event)">
+    <mat-radio-button class="customRadio" value="{{val.value}}" *ngFor="let val of radioCustomValue; let index">{{val.value}}</mat-radio-button>
+  </mat-radio-group>

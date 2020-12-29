@@ -1,0 +1,37 @@
+# this is an auto generated file. This will be overwritten
+mutation UpdateUserPreferences($input: UserPreferencesInput!) {
+  updateUserPreferences(input: $input) {
+    useruuid
+    preferences {
+      timezone
+      locale
+    }
+  }
+}
+mutation CreateAsn($input: CreateAsnInput!) {
+  createAsn(input: $input) {
+    uuid
+    srcrefid
+    srcparentrefid
+    srcchannelid
+    srcchannelid2
+  }
+}
+mutation UpdateAsn($input: UpdateAsnInput!) {
+  updateAsn(input: $input) {
+    uuid
+    srcrefid
+    srcparentrefid
+    srcchannelid
+    srcchannelid2
+  }
+}
+mutation DeleteAsn($uuid: String!) {
+  deleteAsn(uuid: $uuid) {
+    uuid
+    srcrefid
+    srcparentrefid
+    srcchannelid
+    srcchannelid2
+  }
+}

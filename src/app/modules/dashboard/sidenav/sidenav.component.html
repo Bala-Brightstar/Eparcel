@@ -1,0 +1,92 @@
+<mat-drawer-container [class.mat-drawer-container-collapsed]="isHalfCollapsed">
+	<mat-drawer [class.mat-drawer-halfcollapsed]="isHalfCollapsed" class="drawer-background" #drawer mode="side"
+		disableClose="true" opened="true">
+		<div class="sidenav-header">
+			<span>
+				<img class="grs-branding-logo" alt="Brightstar" [src]="logo">
+			</span>
+		</div>
+		<mat-divider></mat-divider>
+		<br>
+		<div>
+			<div style="display: flex; flex-direction: row; justify-content: space-between;">
+				<div
+					[ngClass]="{'menu-name-placement-expanded': isExpanded===true, 'menu-name-placement-collapsed': isHalfCollapsed===true}">
+					<small *ngIf="isExpanded===true" style="text-align: left;letter-spacing: 0.84px;color: #FFFFFF;text-transform: uppercase;opacity: 0.4;">{{mainMenu}}</small></div>
+				<div [ngClass]="{'navigationIconContainer': isExpanded===true, 'navigationIconContainer-collapsed': isHalfCollapsed===true}"
+					class="rounded-circle" (click)="toggleSideNav()" (click)="Dekit = false; RMA = false ">
+					<div class="toggleArrowContainer rounded-circle">
+						<mat-icon style="color: #FFFFFF; margin-top: 2px; margin-left: 2px;">{{defaultNavigationIcon}}
+						</mat-icon>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<mat-divider></mat-divider>
+		<!-- If adding any extra mat-list-item, ensure to turn off or make false in 'navigationIconContainer' div to enable soft navigation -->
+		<mat-nav-list *ngIf="isExpanded" #matList>
+		<mat-list-item routerLinkActive="active" routerLink="/dashboard/dashboardTable"
+				class="parent">
+				<span class="full-width">{{baseLoader.sidenav.menus.admin.title}}</span>
+				<mat-icon mat-list-icon class="iconMargin">local_shipping</mat-icon>
+				<!-- <mat-icon class="menu-button" [ngClass]="{'rotated' : Admin}">expand_more</mat-icon> -->
+			</mat-list-item>
+			<!--<div class="submenu" [ngClass]="{'expanded' : Admin}">
+				<span *ngIf="Admin"> <a routerLinkActive="active" routerLink="/dashboard/location" mat-list-item
+						href="...">{{baseLoader.sidenav.menus.admin.submenus.location}}</a></span>
+			</div>
+			<mat-list-item (click)="Dekit = !Dekit" class="parent">
+				<span class="full-width">{{baseLoader.sidenav.menus.dekit.title}}</span>
+				<mat-icon class="iconMargin" mat-list-icon>analytics</mat-icon>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : Dekit}">expand_more</mat-icon>
+			</mat-list-item>
+			<div class="submenu" [ngClass]="{'expanded' : Dekit}">
+				<span *ngIf="Dekit"> <a routerLinkActive="active" routerLink="/dashboard/dekit" mat-list-item
+						href="...">{{baseLoader.sidenav.menus.dekit.submenus.dekit}}</a></span>
+				<span *ngIf="Dekit"> <a routerLinkActive="active" routerLink="/dashboard/getdekit" mat-list-item
+						href="...">{{baseLoader.sidenav.menus.dekit.submenus.getDekit}}</a></span>
+			</div>
+			<mat-list-item (click)="RMA = !RMA" class="parent">
+				<span class="full-width">{{baseLoader.sidenav.menus.rma.title}}</span>
+				<mat-icon class="iconMargin" mat-list-icon>line_style</mat-icon>
+				<mat-icon class="menu-button" [ngClass]="{'rotated' : RMA}">
+					expand_more</mat-icon>
+			</mat-list-item>
+			<div class="submenu" [ngClass]="{'expanded' : RMA}">
+				<span *ngIf="RMA"><a routerLinkActive="active" routerLink="/dashboard/getrma" mat-list-item
+						href="...">{{baseLoader.sidenav.menus.rma.submenus.getRMA}}</a></span>
+				<span *ngIf="RMA"><a routerLinkActive="active" routerLink="/dashboard/receiverma" mat-list-item
+						href="...">{{baseLoader.sidenav.menus.rma.submenus.receiveRMA}}</a></span>
+			</div> -->
+		</mat-nav-list>
+		<mat-nav-list *ngIf="isHalfCollapsed">
+       <mat-list-item routerLinkActive="active" routerLink="/dashboard/dashboardTable"
+				class="parent">
+				<mat-icon mat-list-icon class="iconMargin">local_shipping</mat-icon>
+			</mat-list-item>
+			<!--<mat-list-item (click)="Dekit = !Dekit" class="parent" [matMenuTriggerFor]="dekit">
+				<mat-icon class="iconMargin" mat-list-icon>analytics</mat-icon>
+			</mat-list-item>
+			<mat-menu #dekit="matMenu" class="collapsed-submenu">
+				<span mat-menu-item
+					routerLink="/dashboard/dekit">{{baseLoader.sidenav.menus.dekit.submenus.dekit}}</span>
+				<span mat-menu-item
+					routerLink="/dashboard/getdekit">{{baseLoader.sidenav.menus.dekit.submenus.getDekit}}</span>
+			</mat-menu>
+			<mat-list-item (click)="RMA = !RMA" class="parent" [matMenuTriggerFor]="RMAdata">
+				<mat-icon class="iconMargin" mat-list-icon>line_style</mat-icon>
+			</mat-list-item> -->
+			<mat-menu #RMAdata="matMenu" class="collapsed-submenu">
+				<span mat-menu-item
+					routerLink="/dashboard/getrma">{{baseLoader.sidenav.menus.rma.submenus.getRMA}}</span>
+				<span mat-menu-item
+					routerLink="/dashboard/receiverma">{{baseLoader.sidenav.menus.rma.submenus.receiveRMA}}</span>
+			</mat-menu>
+		</mat-nav-list>
+		<div class="footer version-info" #footer>
+			<span class="example-spacer"></span>
+			<span style="color: #FFFFFF; ">{{buildVersion}}</span>
+		</div>
+	</mat-drawer>
+</mat-drawer-container>
